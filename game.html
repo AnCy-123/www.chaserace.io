@@ -1,0 +1,134 @@
+<html>
+
+<head>
+    <title>
+        CHASE RACE
+    </title>
+    <link rel="shortcut icon" href="Flag.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="background-image: url('Racing%20Track.jpg');background-position: center;background-repeat: none;
+    background-size: cover;" onload="add()">
+    <center>
+        <h2 style="color: black;">GAME STATUS : <span id="status"></span></h2>
+        <canvas id="canvas" width="1000" height="500">
+    </center>
+
+    </canvas>
+    <script>
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+
+        carOneWidth = 70;
+        carOneHeight = 25;
+        carOne = "Turquoise%20Car.png";
+        carOneX = 700;
+        carOneY = 700;
+
+        carTwoWidth = 70;
+        carTwoHeight = 25;
+        carTwo = "Yellow%20Car.png";
+        carTwoX = 700;
+        carTwoY = 750;
+        var carOneImage = new Image();
+        var carTwoImage = new Image();
+
+        function add() {
+
+            carOneImage.onload = uploadCarOne();
+            carOneImage.src = carOne;
+            console.log(" t car has been spawned")
+
+
+            carTwoImage.onload = uploadCarTwo();
+            carTwoImage.src = carTwo;
+        }
+
+        function uploadCarOne() {
+            ctx.drawImage(carOneImage, carOneX, carOneY, carOneWidth, carOneHeight);
+        }
+
+        function uploadCarTwo() {
+            ctx.drawImage(carTwoImage, carTwoX, carTwoY, carTwoWidth, carTwoHeight);
+        }
+
+        window.addEventListener("keydown", keydown);
+
+        function keydown(e) {
+            keyPressed = e.keyCode;
+            console.log(keyPressed);
+            if (keyPressed == '38') {
+                upOne();
+                console.log("Up Key");
+            }
+            if (keyPressed == '40') {
+                downOne();
+                console.log("Down Key");
+            }
+            if (keyPressed == '37') {
+                leftOne();
+                console.log("Left Key");
+            }
+            if (keyPressed == '39') {
+                rightOne();
+                console.log("Right Key");
+            }
+            if (keyPressed == '87') {
+                upTwo();
+                console.log("W Key");
+            }
+            if (keyPressed == '83') {
+                downTwo();
+                console.log("S Key");
+            }
+            if (keyPressed == '65') {
+                leftTwo();
+                console.log("A Key");
+            }
+            if (keyPressed == '68') {
+                rightTwo();
+                console.log("D Key");
+            }
+        }
+
+        function upOne() {
+            if (carOneY >= 0) {
+                carOneY = carOneY - 10;
+                console.log("When Up pressed x = " + carOneX + " y = " + carOneY);
+                uploadCarOne();
+                uploadCarTwo();
+            }
+        }
+
+        function downOne() {
+            if (carOneY <= 500) {
+                carOneY = carOneY + 10;
+                console.log("When Up pressed x = " + carOneX + " y = " + carOneY);
+                uploadCarOne();
+                uploadCarTwo();
+            }
+        }
+
+        function leftOne() {
+            if (carOneX >= 0) {
+                carOneX = carOneX - 10;
+                console.log("When Up pressed x = " + carOneX + " y = " + carOneY);
+                uploadCarOne();
+                uploadCarTwo();
+            }
+        }
+
+        function rightOne() {
+            if (carOneX <= 500) {
+                carOneX = carOneX + 10;
+                console.log("When Up pressed x = " + carOneX + " y = " + carOneY);
+                uploadCarOne();
+                uploadCarTwo();
+            }
+        }
+
+    </script>
+</body>
+
+</html>
